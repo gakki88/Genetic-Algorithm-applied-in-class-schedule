@@ -23,7 +23,6 @@ lessons.push(new lesson(9, "history", "francois", ["g3"], 1, false));
 lessons.push(new lesson(10, "french", "mary", ["g3"], 1, false));
 
 console.log(lessons);
-//document.getElementById("lesson").innerHTML = JSON.stringify(lessons);
 
 
 
@@ -51,46 +50,40 @@ function fitness(chromosome) {
             //check if in the equiped room when needed
             if (lessons[i].equipment) {
                 score++;
-                console.log(i, " get equipment score");
             }
 
             //check if the classroom size is suitable
             if (lessons[i].group.length > 1) {
                 score++;
-                console.log(i, " get classroom size score");
             }
 
             //check if the teacher is free at time
             if (chromosome.includes(chromosome[i] + 35)) {
                 if (lessons[i].teacher != lessons[chromosome.indexOf(chromosome[i] + 35)].teacher) {
                     score++;
-                    console.log(i, " get teacher free score");
                 }
                 bool = true;
                 for (g = 0; g < lessons[i].group.length; g++) {
                     if (lessons[chromosome.indexOf(chromosome[i] + 35)].group.includes(lessons[i].group[g]))
                         bool = false;
                 }
-                if (bool) { score++; console.log(i, " get student free score"); }
+                if (bool) { score++; }
 
             }
-            else { score+=2; console.log(i, " get teacher and student free score"); }
+            else { score+=2;}
 
             //check if students are free at time
         }
         else {
             if (!lessons[i].equipment) {
                 score++;
-                console.log(i, " get equipment score");
             }
             if (lessons[i].group.length < 2) {
                 score++;
-                console.log(i, " get classroom size score");
             }
             if (chromosome.includes(chromosome[i] - 35)) {
                 if (lessons[i].teacher != lessons[chromosome.indexOf(chromosome[i] - 35)].teacher) {
                     score++;
-                    console.log(i, " get teacher free score");
                 }
                 bool = true;
                 for (g = 0; g < lessons[i].group.length; g++) {
@@ -99,16 +92,14 @@ function fitness(chromosome) {
 
                     }
                 }
-                if (bool) { score++; console.log(i, " get student free score"); }
+                if (bool) { score++; }
             }
-            else { score += 2; console.log(i, " get teacher and student free score"); }
+            else { score += 2;}
         }
         //check if 2 hours course can be delivered
         if ((chromosome[i] % 7 != 2 && chromosome[i] % 7 != 6 && !chromosome.includes(chromosome[i] + 1)) || lessons[i].duration === 1){
-            score++;
-            console.log(i, " get duration score"); 
+            score++; 
         }
-        console.log(score, " ");
     }
     return score/(5*chromosome.length);
 }
@@ -134,10 +125,3 @@ function evolve() {
 var initialPopulation = initialise(15, 10, 70);
 console.log(initialPopulation[0]);
 console.log("final score is ",fitness(initialPopulation[0]));
-// var assert = require("assert");
-// assert.equal(initialPopulation.length, 15);
-// assert.equal(initialPopulation[0].length, 28);
-
-//document.getElementById("population").innerHTML = JSON.stringify(initialPopulation);
-
-//console.log(initialise(15, 28, 70));
