@@ -1,0 +1,47 @@
+/* .column {
+    float: left;
+    width: 25%;
+  }
+  
+ Clear floats after the columns
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  } */
+  :root {
+    --grid-cols: 1;
+    --grid-rows: 1;
+  }
+  
+  .container {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+  }
+  
+  .grid-item {
+    padding: 1em;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  .grid-top{
+    display: grid;
+    background-color: #f0b513;
+    font-size: 18px;
+    color: white;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  .empty-item{
+    padding: 1em;
+    background-color:white;
+    color: black;
+    font-size:15px;
+    width: 100px;
+  }
+
+  
