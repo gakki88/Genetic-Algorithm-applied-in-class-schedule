@@ -1,5 +1,4 @@
 const containers = document.getElementsByClassName("container");
-console.log(containers);
 function makeRows(rows, cols) {
     for(i = 0; i< containers.length; i++){
         

@@ -1,0 +1,18 @@
+[
+     {
+        "id": 1,
+        "course": "math",
+        "teacher": "andy",
+        "group": "g1",
+        "duration": 2,
+        "equipment": true
+      },
+       {
+        "id": 2,
+        "course": "history",
+        "teacher": "francois",
+        "group": "g2",
+        "duration": 1,
+        "equipment": false
+      }
+]

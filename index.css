@@ -19,12 +19,13 @@
     grid-gap: 1em;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
+    width:100%;
   }
   
   .grid-item {
     padding: 1em;
     border: 1px solid #ddd;
-    text-align: center;
+    text-align: justify;
   }
 
   .grid-top{
@@ -41,7 +42,6 @@
     background-color:white;
     color: black;
     font-size:15px;
-    width: 100px;
   }
 
   

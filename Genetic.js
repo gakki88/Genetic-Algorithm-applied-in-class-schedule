@@ -22,14 +22,11 @@ lessons.push(new lesson(8, "sport", "esabelle", ["g2"], 1, false));
 lessons.push(new lesson(9, "history", "francois", ["g3"], 1, false));
 lessons.push(new lesson(10, "french", "mary", ["g3"], 1, false));
 
-//document.getElementById("lesson").innerHTML = JSON.stringify(lessons);
-
-
 
 
 function initialise(populationSize, LessonSize, timespaceSize) {
     population = [];
-    for (ips = 0; ips < populationSize; ips++) {
+    for (let ips = 0; ips < populationSize; ips++) {
         chromosome = [];
         while (chromosome.length < LessonSize) {
             var r = Math.floor(Math.random() * Math.floor(timespaceSize));
@@ -44,7 +41,7 @@ function initialise(populationSize, LessonSize, timespaceSize) {
 //fitness for one chromosome
 function fitness(chromosome) {
     score = 0;
-    for (i = 0; i < chromosome.length; i++) {
+    for (let i = 0; i < chromosome.length; i++) {
         if (chromosome[i] <= 35) {
             //check if in the equiped room when needed
             if (lessons[i].equipment) {
@@ -104,17 +101,17 @@ function fitness(chromosome) {
 }
 
 function selectParents(population) {
-    sum = 0;
+    let sum = 0;
     population.forEach(e => { sum += e.fitness; });
 
-    p1 = Math.floor(Math.random() * Math.floor(sum));
+    let p1 = Math.floor(Math.random() * Math.floor(sum));
     let i = 0;
     while (p1 < sum) {
         p1 += population[i].fitness;
         i++;
     }
     i--;
-    p2 = Math.floor(Math.random() * Math.floor(sum));
+    let p2 = Math.floor(Math.random() * Math.floor(sum));
     let j = 0;
     while (p2 < sum) {
         p2 += population[j].fitness;
@@ -193,11 +190,12 @@ initialPopulation.forEach(element => {
 });
 evolve(population, l, n, s, 0.8, 0.2 );
 for(generation = 0; generation < 200; generation++){
-    console.log("generation: ",generation, "fit: " ,population[0].fitness);
     if(population[0].fitness<1)
         evolve(population, l, n, s, 0.8, 0.2 );
     else break;
 }
+console.log("generation: ",generation, "best fitness: " ,population[0].fitness);
+
 console.log(population);
 
-//document.getElementById("population").innerHTML = JSON.stringify(initialPopulation);
+
