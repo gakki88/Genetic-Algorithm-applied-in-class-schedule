@@ -7,7 +7,7 @@
 
 <body>
     <h1>Genetic Algorithm for class schedule</h1>
-<button onclick="run()">Run my algorithm</button>
+    <button onclick="run()">Run my algorithm</button>
     <h3>Room 1</h3>
     <div class="grid-top">
         <div class="empty-item">Equiped<br>Large room</div>
@@ -40,32 +40,32 @@
     <script src="visualization.js"></script>
     <script src="Genetic.js"></script>
     <script>
-        function run(){
+        function run() {
             result = population[0].chromosome;
-        let cell = containers[0].children;
-        console.log(result);
-        let j = 0;
-        for(let j = 0;j<result.length;j++){
-            for (let i = 0; i < cell.length; i++) {
-                if (result[j] == cell[i].innerText) {
-                    cell[i].innerHTML = JSON.stringify(lessons[j], null, '\t');
-                    break;
+            let cell = containers[0].children;
+            console.log(result);
+            let j = 0;
+            for (let j = 0; j < result.length; j++) {
+                for (let i = 0; i < cell.length; i++) {
+                    if (result[j] == cell[i].innerText) {
+                        cell[i].innerHTML = JSON.stringify(lessons[j], null, '\t');
+                        break;
+                    }
+                }
+            }
+
+
+            cell = containers[1].children;
+            j = 0;
+            for (let j = 0; j < result.length; j++) {
+                for (let i = 0; i < cell.length; i++) {
+                    if (result[j] - 35 == cell[i].innerText) {
+                        cell[i].innerText = JSON.stringify(lessons[j], null, '\t');
+                        break;
+                    }
                 }
             }
         }
-        
-        
-        cell = containers[1].children;
-        j = 0;
-        for(let j = 0;j<result.length;j++){
-            for (let i = 0; i < cell.length; i++) {
-                if (result[j] - 35 == cell[i].innerText) {
-                    cell[i].innerText = JSON.stringify(lessons[j], null, '\t');
-                    break;
-                }
-            }
-        }
-        }
-        
+
     </script>
 </body>
