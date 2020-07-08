@@ -182,20 +182,23 @@ function evolve(population, l, n, s, pc, pm) {
     population[s-2] = {chromosome:children.child2, fitness: fitness(children.child2)};
 }
 
-l = 10; n = 70; s = 15;
-var initialPopulation = initialise(15, 10, 70);  //l = 10, n = 70
-population = [];
-initialPopulation.forEach(element => {
-    population.push({ chromosome: element, fitness: fitness(element) });
-});
-evolve(population, l, n, s, 0.8, 0.2 );
-for(generation = 0; generation < 200; generation++){
-    if(population[0].fitness<1)
-        evolve(population, l, n, s, 0.8, 0.2 );
-    else break;
+function runAlgo(){
+    l = 10; n = 70; s = 15;
+    var initialPopulation = initialise(15, 10, 70);  //l = 10, n = 70
+    population = [];
+    initialPopulation.forEach(element => {
+        population.push({ chromosome: element, fitness: fitness(element) });
+    });
+    evolve(population, l, n, s, 0.8, 0.2 );
+    for(generation = 0; generation < 200; generation++){
+        if(population[0].fitness<1)
+            evolve(population, l, n, s, 0.8, 0.2 );
+        else break;
+    }
+    console.log("generation: ",generation, "best fitness: " ,population[0].fitness);
+    
+    console.log(population);
 }
-console.log("generation: ",generation, "best fitness: " ,population[0].fitness);
 
-console.log(population);
 
 
