@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Etch-a-Sketch</title>
+    <title>Class Schedule</title>
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
     <h1>Genetic Algorithm for class schedule</h1>
-    <button onclick="run()">Run my algorithm</button>
+    <button id="myButton" onclick="run()">Run my algorithm</button>
+    <button onClick="history.go(0);">Restart</button>
     <h3>Room 1</h3>
     <div class="grid-top">
         <div class="empty-item">Equiped<br>Large room</div>
@@ -41,6 +42,7 @@
     <script src="Genetic.js"></script>
     <script>
         function run() {
+            runAlgo();
             result = population[0].chromosome;
             let cell = containers[0].children;
             console.log(result);
@@ -65,7 +67,14 @@
                     }
                 }
             }
+            var x = document.getElementById("myButton");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
         }
+
 
     </script>
 </body>
