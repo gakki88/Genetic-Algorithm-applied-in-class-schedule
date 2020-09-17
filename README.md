@@ -19,5 +19,3 @@ The fitness function considers the following points:
 3. Teacher is free at the time
 4. Students are free at the time
 5. The course duration is satisfied
-
-## Prerequisites / Stack used
